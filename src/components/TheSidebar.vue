@@ -53,7 +53,7 @@ import BaseMixin from '@/components/mixins/base'
 import TheSelectPrinterDialog from '@/components/TheSelectPrinterDialog.vue'
 import AboutDialog from '@/components/dialogs/AboutDialog.vue'
 import { navigationWidth, topbarHeight } from '@/store/variables'
-import MainsailLogo from '@/components/ui/MainsailLogo.vue'
+import GenfabLogo from '@/components/ui/GenfabLogo.vue'
 import SidebarItem from '@/components/ui/SidebarItem.vue'
 import NavigationMixin from '@/components/mixins/navigation'
 import ThemeMixin from '@/components/mixins/theme'
@@ -63,7 +63,7 @@ import ThemeMixin from '@/components/mixins/theme'
         SidebarItem,
         TheSelectPrinterDialog,
         AboutDialog,
-        MainsailLogo,
+        GenfabLogo,
     },
 })
 export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin, ThemeMixin) {

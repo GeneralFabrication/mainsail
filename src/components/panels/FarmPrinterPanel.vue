@@ -116,7 +116,7 @@
 import { Component, Mixins, Prop, Ref, Vue } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
 import { FarmPrinterState } from '@/store/farm/printer/types'
-import MainsailLogo from '@/components/ui/MainsailLogo.vue'
+import GenfabLogo from '@/components/ui/GenfabLogo.vue'
 import Panel from '@/components/ui/Panel.vue'
 import { mdiPrinter3d, mdiWebcam, mdiMenuDown, mdiWebcamOff, mdiFileOutline } from '@mdi/js'
 import { Debounce } from 'vue-debounce-decorator'
@@ -129,7 +129,7 @@ import ThemeMixin from '@/components/mixins/theme'
     components: {
         Panel,
         'webcam-wrapper': WebcamWrapper,
-        'mainsail-logo': MainsailLogo,
+        'mainsail-logo': GenfabLogo,
     },
 })
 export default class FarmPrinterPanel extends Mixins(BaseMixin, ThemeMixin, WebcamMixin) {
