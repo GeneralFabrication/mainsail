@@ -77,6 +77,34 @@ export default class App extends Mixins(BaseMixin, ThemeMixin) {
         }
     }
 
+
+    nukeFont() {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      * {
+        font-family: 'Berkeley Mono', monospace !important;
+      }
+    `;
+    document.head.appendChild(styleElement);
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) { // ELEMENT_NODE
+              (node as HTMLElement).style.setProperty('font-family', '"Berkeley Mono", monospace', 'important');
+            }
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+}
+
     get title(): string {
         return this.$store.getters['getTitle']
     }
@@ -163,6 +191,7 @@ export default class App extends Mixins(BaseMixin, ThemeMixin) {
             '--panel-toolbar-text-btn-height': panelToolbarHeight + 'px',
             '--topbar-icon-btn-width': topbarHeight + 'px',
             '--sidebar-menu-item-height': navigationItemHeight + 'px',
+            '--v-font-family': '"Berkeley Mono", monospace !important',
         }
     }
 
@@ -376,6 +405,7 @@ export default class App extends Mixins(BaseMixin, ThemeMixin) {
         this.appHeight()
         window.addEventListener('resize', this.appHeight)
         window.addEventListener('orientationchange', this.appHeight)
+        this.nukeFont()
     }
 }
 </script>
@@ -390,6 +420,21 @@ export default class App extends Mixins(BaseMixin, ThemeMixin) {
 
 :root {
     --app-height: 100%;
+}
+
+body, #app, .v-application {
+  font-family: 'Berkeley Mono', monospace !important;
+}
+
+.v-application .headline,
+.v-application .title,
+.v-application .subtitle-1,
+.v-application .subtitle-2,
+.v-application .body-1,
+.v-application .body-2,
+.v-application .caption,
+.v-application .overline {
+  font-family: 'Berkeley Mono', monospace !important;
 }
 
 #content {

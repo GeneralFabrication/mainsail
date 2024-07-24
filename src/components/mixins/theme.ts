@@ -16,6 +16,25 @@ export default class ThemeMixin extends Vue {
         return this.$store.getters['gui/theme']
     }
 
+    get globalFont() {
+        return this.theme.globalFont || 'Berkeley Mono, monospace'
+    }
+
+    mounted() {
+        this.applyGlobalFont()
+    }
+
+    updated() {
+        this.applyGlobalFont()
+    }
+
+    applyGlobalFont() {
+        document.body.style.setProperty('font-family', this.globalFont, 'important')
+
+        // Apply to Vuetify components by updating CSS variables
+        document.documentElement.style.setProperty('--v-font-family', this.globalFont)
+    }
+
     get theme() {
         return this.$store.getters['gui/getTheme']
     }

@@ -17,4 +17,7 @@ export default new Vuetify({
     breakpoint: {
         mobileBreakpoint: 768,
     },
+    typography: {
+        fontFamily: 'Berkeley Mono, monospace',
+    },
 })
